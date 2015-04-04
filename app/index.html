@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp" ng-controller="PhoneListCtrl">
+<head>
+    <meta charset="utf-8">
+    <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery:</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body>
+    Search: <input ng-model="query">
+    Sorty by:
+    <select ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+    </select>
+
+    <ul class="phones">
+        <li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail">
+            <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+            <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+            <p>{{phone.snippet}}</p>
+        </li>
+    </ul>
+
+    <p> query = {{query}}</p>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</body>
+</html>
